@@ -1,4 +1,4 @@
-package com.example.kids_browser;
+package com.example.artemis;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.kids_browser", appContext.getPackageName());
+        assertEquals("com.example.artemis", appContext.getPackageName());
     }
 }

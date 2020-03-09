@@ -1,4 +1,4 @@
-package com.example.kids_browser;
+package com.example.artemis;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package com.example.kids_browser;
+package com.example.artemis;
 
 import org.junit.Test;
 

@@ -2,6 +2,9 @@ package com.example.artemis.backend;
 
 import java.util.ArrayList;
 
+/*
+ * Class for list of favourites.
+ */
 public class FavouritesList {
     private ArrayList<Favourite> favourites;
 
@@ -9,15 +12,19 @@ public class FavouritesList {
         ArrayList<Favourite> favourites = new ArrayList<Favourite>();
     }
 
-    public String addFavourite(String title, String url) {
+    /*
+     * Adds a favourite to the list.
+     */
+    public void addFavourite(String title, String url) {
         Favourite fav = new Favourite(title, url);
         favourites.add(fav);
-        return ("Successfully added " + title + " to Favourites!");
     }
 
-    public String removeFavourite(Favourite fav) {
+    /*
+     * Removes a favourite from the list.
+     */
+    public void removeFavourite(Favourite fav) {
         favourites.remove(fav);
-        return ("Successfully removed " + fav.getTitle() + " from Favourites!");
     }
 
 }

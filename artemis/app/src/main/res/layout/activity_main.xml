@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-<<<<<<< HEAD
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="185dp"
         android:layout_height="51dp"
@@ -88,7 +87,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
-=======
+    =======
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -97,6 +96,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
->>>>>>> 8fac4aaba8ce889398873bef6b35313b5e86848b
+    >>>>>>> 8fac4aaba8ce889398873bef6b35313b5e86848b
 
 </android.support.constraint.ConstraintLayout>

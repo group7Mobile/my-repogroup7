@@ -7,72 +7,61 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="185dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="45dp"
-        android:layout_marginEnd="6dp"
-        android:layout_marginRight="6dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton2"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="168dp"
-            android:layout_height="38dp"
-            android:hint="Search" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/go"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:layout_marginEnd="5dp"
         android:layout_marginRight="5dp"
         android:layout_weight="1"
+        android:onClick="go"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton6"
         app:srcCompat="@android:drawable/ic_menu_send" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/favorites"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="47dp"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton"
+        app:layout_constraintEnd_toStartOf="@+id/go"
+        app:layout_constraintStart_toEndOf="@+id/addressBar"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/btn_star_big_on" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/cancel"
         android:layout_width="42dp"
         android:layout_height="38dp"
         android:layout_marginTop="58dp"
-        app:layout_constraintStart_toEndOf="@+id/imageButton4"
+        android:onClick="cancel"
+        app:layout_constraintStart_toEndOf="@+id/refresh"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_delete" />
 
     <ImageButton
-        android:id="@+id/imageButton4"
+        android:id="@+id/refresh"
         android:layout_width="42dp"
         android:layout_height="38dp"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="11dp"
+        android:onClick="refresh"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton5"
+        app:layout_constraintTop_toBottomOf="@+id/goBack"
         app:srcCompat="@android:drawable/ic_menu_rotate" />
 
     <ImageButton
-        android:id="@+id/imageButton5"
+        android:id="@+id/goBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="4dp"
+        android:onClick="goBackPage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/abc_vector_test" />
@@ -87,15 +76,45 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
-    =======
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+
+    <EditText
+        android:id="@+id/addressBar"
+        android:layout_width="190dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="47dp"
+        android:ems="10"
+        android:onClick="makeBarVisible"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/cancel"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <WebView
+        android:id="@+id/viewer"
+        android:layout_width="411dp"
+        android:layout_height="500dp"
+        android:onClick="makeBarInvisibleView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addressBar" />
+
+    <TextView
+        android:id="@+id/clearBarText"
+        android:layout_width="17dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="56dp"
+        android:gravity="center"
+        android:text="X"
+        android:textSize="25dp"
+        android:onClick="clearBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.657"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" /><![CDATA[
+
+
+    =======
+
     >>>>>>> 8fac4aaba8ce889398873bef6b35313b5e86848b
 
+
+]]>
 </android.support.constraint.ConstraintLayout>

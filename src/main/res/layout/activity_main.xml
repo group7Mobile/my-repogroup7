@@ -122,6 +122,17 @@
         android:textSize="25sp"
         app:layout_constraintEnd_toStartOf="@+id/favorites"
         app:layout_constraintTop_toTopOf="parent" />
+    
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="239dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@+id/goBackPage"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

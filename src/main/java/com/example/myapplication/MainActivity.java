@@ -1,19 +1,22 @@
 package com.example.myapplication;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
-
 import background.FavDatabaseHelper;
 import background.FavDialog;
 import background.HPDatabaseHelper;
@@ -24,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private WebView viewer;
     private String tempUrl;
     private String home;
+    private TextView xross;
     private FavDialog favDialog;
     FavDatabaseHelper favDatabaseHelper;
     HPDatabaseHelper hpDatabaseHelper;
@@ -35,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         addressBar = findViewById(R.id.addressBar);
         viewer = findViewById(R.id.viewer);
+        xross = findViewById(R.id.clear);
+        xrossInvisible(null);
         favDatabaseHelper = new FavDatabaseHelper(this);
         hpDatabaseHelper = new HPDatabaseHelper(this);
         viewer.setWebViewClient(new WebViewClient());
@@ -116,20 +122,30 @@ public class MainActivity extends AppCompatActivity {
     public void settings(View v) {
         Intent goSettings = new Intent(this, Settings.class);
         startActivity(goSettings);
+        xrossInvisible(null);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     public void go(View v) {
         filterUrl(addressBar.getText().toString());
         viewer.loadUrl(tempUrl);
+        View view = this.getCurrentFocus();
+        if(view != null) {
+            InputMethodManager inm = (InputMethodManager) getSystemService((Activity.INPUT_METHOD_SERVICE));
+            inm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            xrossInvisible(null);
+        }
     }
 
     public void refresh(View v) {
         viewer.loadUrl(viewer.getUrl());
+        xrossInvisible(null);
     }
 
     public void gobackPage(View v) {
         if (viewer.canGoBack()) {
             viewer.goBack();
+            xrossInvisible(null);
         }
     }
 
@@ -148,6 +164,7 @@ public class MainActivity extends AppCompatActivity {
         }
         home = filterUrl(home);
         viewer.loadUrl(home);
+        xrossInvisible(null);
     }
 
     public String filterUrl(String link) {
@@ -183,7 +200,15 @@ public class MainActivity extends AppCompatActivity {
         return tempUrl;
     }
 
-    public void del(View v) {
-        hpDatabaseHelper.del();
+    public void clearAddressBar(View v) {
+        addressBar.getText().clear();
+    }
+
+    public void xrossVisible(View v) {
+        xross.animate().alpha(1.0f).setDuration(0);
+    }
+
+    public void xrossInvisible(View v) {
+        xross.animate().alpha(0.0f).setDuration(0);
     }
 }

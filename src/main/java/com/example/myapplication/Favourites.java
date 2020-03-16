@@ -1,48 +1,61 @@
-package com.example.myapplication;
+package com.example.artemis;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.database.Cursor;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-
-import background.FavDatabaseHelper;
-import background.FavList;
+import java.util.Arrays;
 
 public class Favourites extends AppCompatActivity {
-
-    private static final String TAG = "ListDataActivity";
-
-    FavDatabaseHelper favDatabaseHelper;
-
-    private ListView listView;
-
+    private ArrayList<String> arrayList;
+    private ArrayAdapter<String> adapter;
+    private EditText txtInput;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favourites);
-        listView = (ListView) findViewById(R.id.listView);
-        favDatabaseHelper = new FavDatabaseHelper(this);
-
-        populateList();
-    }
-
-    private void populateList() {
-        Log.d(TAG, "populateListView: Display");
-        favDatabaseHelper = new FavDatabaseHelper(this);
-        Cursor data = favDatabaseHelper.getData();
-        ArrayList<String> listData = new ArrayList<>();
-        while(data.moveToNext()) {
-            listData.add((data.getString(1)));
-        }
-
-        ListAdapter adapter;
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData);
+        ListView listView = (ListView) findViewById(R.id.listView2);
+        String[] items = {"1","2","3"};
+        arrayList = new ArrayList<>(Arrays.asList(items));
+        //constructor of adapter to store input item separately in list_item and put them in list_view
+        adapter = new ArrayAdapter<String>(this,R.layout.list_item,R.id.txtitem,arrayList);
         listView.setAdapter(adapter);
+        Button btnAdd = (Button) findViewById(R.id.button21);
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txtInput = (EditText) findViewById(R.id.editText3);
+                String newItem = txtInput.getText().toString();
+                //every time add an item, add it in the top of stack by adding it to the 0 index of the arrayList
+                arrayList.add(0,newItem);
+                adapter.notifyDataSetChanged();
+            }
+        });
+
+        Button btnPop = (Button) findViewById(R.id.button24);
+        btnPop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(arrayList.size()==0){
+                    return;
+                }
+
+                arrayList.remove(0);
+                adapter.notifyDataSetChanged();
+            }
+        });
+
     }
+    public void mainPage(View v) {
+        Intent goMainPage = new Intent(this, Settings.class);
+        startActivity(goMainPage);
+    }
+
 }

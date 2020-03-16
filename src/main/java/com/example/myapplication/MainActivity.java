@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private String tempUrl;
     private String home;
     private TextView xross;
+    private TextView hdr;
     private FavDialog favDialog;
     FavDatabaseHelper favDatabaseHelper;
     HPDatabaseHelper hpDatabaseHelper;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         addressBar = findViewById(R.id.addressBar);
         viewer = findViewById(R.id.viewer);
         xross = findViewById(R.id.clear);
+        hdr = findViewById(R.id.textView7);
         xrossInvisible(null);
         favDatabaseHelper = new FavDatabaseHelper(this);
         hpDatabaseHelper = new HPDatabaseHelper(this);
@@ -134,18 +136,39 @@ public class MainActivity extends AppCompatActivity {
             InputMethodManager inm = (InputMethodManager) getSystemService((Activity.INPUT_METHOD_SERVICE));
             inm.hideSoftInputFromWindow(view.getWindowToken(), 0);
             xrossInvisible(null);
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    hdr.setText(viewer.getTitle());
+                }
+            }, 1000);
         }
     }
 
     public void refresh(View v) {
         viewer.loadUrl(viewer.getUrl());
         xrossInvisible(null);
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                hdr.setText(viewer.getTitle());
+            }
+        }, 1000);
     }
 
     public void gobackPage(View v) {
         if (viewer.canGoBack()) {
             viewer.goBack();
             xrossInvisible(null);
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    hdr.setText(viewer.getTitle());
+                }
+            }, 1000);
         }
     }
 
@@ -165,6 +188,13 @@ public class MainActivity extends AppCompatActivity {
         home = filterUrl(home);
         viewer.loadUrl(home);
         xrossInvisible(null);
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                hdr.setText(viewer.getTitle());
+            }
+        }, 1000);
     }
 
     public String filterUrl(String link) {

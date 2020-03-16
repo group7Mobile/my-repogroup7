@@ -43,7 +43,6 @@ public class FavDatabaseHelper extends SQLiteOpenHelper {
         Log.d(TAG, "addData: Adding " + tt + " to " + TABLE_NAME);
 
         long result = db.insert(TABLE_NAME, null, contentValues);
-        db.execSQL("INSERT INTO " + TABLE_NAME + " VALUES(" + tt + ", " + lk);
         if (result == -1) {
             return false;
         } else {

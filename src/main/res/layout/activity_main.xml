@@ -96,6 +96,7 @@
         android:layout_height="51dp"
         android:layout_marginTop="45dp"
         android:ems="10"
+        android:onClick="xrossVisible"
         android:inputType="textPersonName"
         app:layout_constraintStart_toEndOf="@+id/cancel"
         app:layout_constraintTop_toTopOf="parent" />
@@ -104,8 +105,23 @@
         android:id="@+id/viewer"
         android:layout_width="409dp"
         android:layout_height="500dp"
+        android:onClick="xrossInvisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cancel" />
+
+    <TextView
+        android:id="@+id/clear"
+        android:layout_width="18dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:gravity="center_horizontal"
+        android:text="X"
+        android:onClick="clearAddressBar"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toStartOf="@+id/favorites"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
